@@ -15,7 +15,7 @@ spec:
 
     helm:
       valueFiles:
-        - ../../environments/prod/catalog-api.yaml
+        - values/catalog-gitops-prod.yaml
 
   destination:
     server: https://kubernetes.default.svc

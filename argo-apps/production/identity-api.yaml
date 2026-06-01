@@ -15,7 +15,7 @@ spec:
 
     helm:
       valueFiles:
-        - ../../environments/prod/identity-api.yaml
+        - values/identity-gitops-prod.yaml
 
   destination:
     server: https://kubernetes.default.svc
