@@ -15,7 +15,7 @@ spec:
 
     helm:
       valueFiles:
-        - ../../environments/stg/ecommerce-ui.yaml
+        - values/gitops-stg.yaml
 
   destination:
     server: https://kubernetes.default.svc
