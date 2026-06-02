@@ -9,13 +9,20 @@ spec:
   project: default
 
   source:
-  repoURL: https://helm.elastic.co
-  chart: elasticsearch
-  targetRevision: 8.5.1
+    repoURL: https://helm.elastic.co
+    chart: elasticsearch
+    targetRevision: 8.5.1
 
-  helm:
-    valueFiles:
-      - values.yaml
+    helm:
+      values: |
+        volumeClaimTemplate:
+          accessModes: ["ReadWriteOnce"]
+
+          storageClassName: gp2
+
+          resources:
+            requests:
+              storage: 5Gi
 
   destination:
     server: https://kubernetes.default.svc
