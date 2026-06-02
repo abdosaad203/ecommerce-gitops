@@ -15,8 +15,20 @@ spec:
 
     helm:
       values: |
+        replicas: 1
+
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "256Mi"
+
+          limits:
+            cpu: "200m"
+            memory: "512Mi"
+
         volumeClaimTemplate:
-          accessModes: ["ReadWriteOnce"]
+          accessModes:
+            - ReadWriteOnce
 
           storageClassName: gp2
 
