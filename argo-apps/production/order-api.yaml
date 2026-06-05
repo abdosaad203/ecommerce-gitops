@@ -8,14 +8,20 @@ metadata:
 spec:
   project: default
 
-  source:
-    repoURL: https://github.com/abdosaad203/helm-backend.git
-    targetRevision: main
-    path: backend
+  sources:
 
-    helm:
-      valueFiles:
-        - values/order-gitops-prod.yaml
+    - repoURL: https://github.com/abdosaad203/helm-backend.git
+      targetRevision: main
+      path: backend
+
+      helm:
+        valueFiles:
+          - values/order-gitops-prod.yaml
+          - $values/environments/prod/order-api.yaml
+
+    - repoURL: https://github.com/abdosaad203/ecommerce-gitops.git
+      targetRevision: main
+      ref: values
 
   destination:
     server: https://kubernetes.default.svc
