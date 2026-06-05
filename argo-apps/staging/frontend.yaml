@@ -8,14 +8,19 @@ metadata:
 spec:
   project: default
 
-  source:
-    repoURL: https://github.com/abdosaad203/helm-frontend.git
-    targetRevision: main
-    path: frontend
+  sources:
 
-    helm:
-      valueFiles:
-        - values/gitops-stg.yaml
+    - repoURL: https://github.com/abdosaad203/helm-frontend.git
+      targetRevision: main
+      path: frontend
+
+      helm:
+        valueFiles:
+          - $values/environments/stg/ecommerce-ui.yaml
+
+    - repoURL: https://github.com/abdosaad203/ecommerce-gitops.git
+      targetRevision: main
+      ref: values
 
   destination:
     server: https://kubernetes.default.svc
