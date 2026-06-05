@@ -1,3 +1,19 @@
+replicaCount: 2
+
 image:
   repository: ghcr.io/abdosaad203/ecommerce-frontend
   tag: "5375340"
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  host: ecommerce.local
+
+pvc:
+  enabled: true
+  storageClassName: gp2
+  size: 2Gi
+  mountPath: /var/log/nginx
