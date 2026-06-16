@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: monitoring-stack
+  name: servicemonitors
   namespace: argocd
 
 spec:
@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/abdosaad203/ecommerce-gitops.git
     targetRevision: main
-    path: monitoring/prometheus
+    path: monitoring/servicemonitors
 
   destination:
     server: https://kubernetes.default.svc
@@ -21,3 +21,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
