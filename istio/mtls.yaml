@@ -3,6 +3,7 @@ kind: PeerAuthentication
 
 metadata:
   name: default
+  namespace: default
 
 spec:
   mtls:
