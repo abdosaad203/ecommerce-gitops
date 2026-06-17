@@ -1,21 +1,30 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
+
 metadata:
   name: deny-root-containers
+
 spec:
   validationFailureAction: Enforce
   background: true
 
   rules:
     - name: require-non-root
+
       match:
         any:
         - resources:
             kinds:
             - Pod
 
+      exclude:
+        any:
+        - resources:
+            namespaces:
+            - istio-system
+
       validate:
-        message: "Running as root is not allowed"
+        message: Running as root is not allowed
 
         pattern:
           spec:
