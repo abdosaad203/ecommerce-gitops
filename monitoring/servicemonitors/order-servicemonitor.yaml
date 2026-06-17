@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+
+metadata:
+  name: order-api
+  namespace: monitoring
+  labels:
+    release: monitoring
+
+spec:
+  namespaceSelector:
+    matchNames:
+      - default
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: order-api
+      app.kubernetes.io/name: backend
+
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: 15s
