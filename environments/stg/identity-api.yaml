@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/abdosaad203/identity-api
-  tag: sha-aba488a
+  tag: sha-a682f71
 
 migration:
   enabled: true
